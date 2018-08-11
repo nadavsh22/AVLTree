@@ -1,0 +1,45 @@
+nadavsh22
+
+
+=============================
+=      File description     =
+=============================
+Node.java
+AvlTree.java
+=============================
+=          Design           =
+=============================
+as part of my implementation for AvlTree i wrote another class implementing a node in the tree.
+the Node has a pointer to left and right son, it holds a value. the pointers and value can be set by user.
+it has its height, and a method updating it's height in a tree. and balanceFactor that calculates the height
+difference between the left and right subtrees.
+
+=============================
+=  Implementation details   =
+=============================
+1) add(): the add method uses a recursive helper function that does all the work. first it checks if the value
+is in the tree, if not it creates a node containing the value. the helper method recursively searches for a
+slot in the tree. after added, going back up in the recursion it updates every nodes height and checks it
+balance factor. once the unbalanced node is found it checks which is the current scenario (out of 4). after we
+find the case it uses two other helper functions, rightRotate, leftRotate, that perform the needed rotations
+according to the scenario.
+
+2) the delete() method works in a similar way, with a main difference, that after finding the node to be
+removed it finds the next inorder successor and puts it instead of the deleted node. after deletion the
+rotation will probably take place in every level of the recursion, because deletion will make the tree
+unbalanced in all levels.
+=============================
+=    Answers to questions   =
+=============================
+
+1. Analyzing AvlTree
+in order to figure out how 12 numbers should be inserted first i drew an empty AvlTree of height 4, then
+filled the tree with the values 'outside-in' to see how they are ordered in the tree. i figured out that in
+order to build a tree like that, adding values one by one, i need to first insert all the roots
+(top to bottom) and then insert the leaves in a way that every root stays balanced.
+the order is [5,3,8,2,7,10,11,4,1,6,9,12]
+
+2. construction complexity
+i)the complexity of each insertion is O(log n) so inserting n elements will take O(n log n)
+ii) the way i implemented the copy constructor uses the trees iterator so it will be creating a node for each
+ value the iterator returns and inserting it in the tree. n elements meaning O(n log n).
